@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="estilosD.css">
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Dashboard EI-TI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Histórico</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <button class="btn btn-outline-success" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+  	<div class="container d-flex justify-content-around align-items-center">
+  		<div class="title-header">
+  			
+    <h1>servidor loT</h1>
+    <h6>User: Luis Rodriguez</h6>
+
+  		</div>
+  		<img src="imagenes/estgD.png"width="300px">
+
+  	</div>
+
+
+  	<div class="container">
+  		
+<div class="row">
+	<div class="col-sm-4">
+	  <div class="card text-center" >
+       <h5 class="card-header sensor" >Temperatura: 40%</h5>
+       <div class="card-body">
+  	   <img src="imagenes/temperature-high.png">
+    
+      </div>
+	  <p class="card-footer">Actualizacao 2024/03/10 14:31-<a href="#">Historico</a></p>
+	  </div>
+	</div>
+	
+	<div class="col-sm-4">
+	  <div class="card text-center">
+    	<h5 class="card-header sensor">Humedad: 70%</h5>
+  		<div class="card-body">
+  		<img src="imagenes/humidity-high.png">
+        
+  		</div>
+	    <p class="card-footer">Actualizacao 2024/03/10 14:31-<a href="#">Historico</a></p>
+	  </div>
+	</div>
+
+	<div class="col-sm-4">
+	  <div class="card text-center" >
+        <h5 class="card-header atuador">Led Arduino: Ligado</h5>
+        <div class="card-body">
+  	    <img src="imagenes/light-on.png">
+        
+        </div>
+        <p class="card-footer">Actualizacao 2024/03/10 14:31-<a href="#" >Historico</a></p>
+  	</div>
+<br>
+
+    
+  </div>
+
+<div class="card">
+  <h5 class="card-header ">Tabela de Sensores</h5>
+  <div class="card-body">
+    <table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Tipo de Dispositivo loT</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Data de Actualizacao</th>
+      <th scope="col">Estado de Alertas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Temperatura</td>
+      <td>40</td>
+      <td>2024/03/10 14:31</td>
+      <td class="badge rounded-pill text-bg-danger">Elevada</td>
+    </tr>
+    <tr>
+      <td>Humidade</td>
+      <td>70%</td>
+      <td>2024/03/10 14:31</td>
+      <td class="badge rounded-pill text-bg-primary">Normal</td>
+    </tr>
+    <tr>
+      <td>Led Arduino</td>
+      <td>Ligado</td>
+      <td>2024/03/10 14:31</td>
+      <td class="badge rounded-pill text-bg-success">Ativo</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+<?php 
+    $user
+    $ano = 2024;
+    $mes = 03;
+    $dia = 22; 
+    echo "Username:";
+    echo "Password:";
+    echo "Data de hoje =" .$ano .'/'.$mes.'/'.$dia;
+?>
+
+<?php 
+   
+    echo "Username:";
+    echo "Password:";
+   
+?>
