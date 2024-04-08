@@ -1,4 +1,12 @@
 <?php
+$valor_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt");
+$valor_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt");
+$valor_electricida = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt");
+$valor_warning = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
+$valor_alumbrado = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Alumbrado\\valor.txt");
+$valor_Aparcamento = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Aparcamento\\valor.txt");
+$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
+$nome_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\nombre.txt");
 session_start();
 
 // Si se envía el formulario de logout
@@ -28,6 +36,7 @@ if(!isset($_SESSION['username'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilo/estilosD.css">
+    <meta http-equiv="refresh" content="5">
   </head>
   <body style="background: #F0F3F6 ;">
 
@@ -155,10 +164,13 @@ if(!isset($_SESSION['username'])){
                    <div class="col-sm-4">
                     <div class="card text-center" style="border-radius: 24px;">
                             
-                        <div class="card-body" >
-                            <h5 class="card-title">Alumbrado Publico</h5>
-                            <p class="card-text">Ligth</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
+                        <div class="card-body">
+                            <div class="col-sm-7">
+                                
+                            <h5 class="card-title" style="text-align: left;">Electricidade </h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_electricida;?>kWh</h5>
+                            </div>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
@@ -168,9 +180,12 @@ if(!isset($_SESSION['username'])){
                <div class="card text-center" style="border-radius: 24px;">
                             
                         <div class="card-body">
-                            <h5 class="card-title">Temperatura ambiente</h5>
-                            <p class="card-text">Temperature</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
+                            <div class="col-sm-5">
+                                
+                            <h5 class="card-title" style="text-align: left;">Temperatura </h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_temperatura;?>°C</h5>
+                            </div>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
@@ -179,10 +194,13 @@ if(!isset($_SESSION['username'])){
                   <div class="col-sm-4">
                     <div class="card text-center"style="border-radius: 24px;">
                             
-                        <div class="card-body">
-                            <h5 class="card-title">Humedad ambiente</h5>
-                            <p class="card-text">Humidity</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
+                     <div class="card-body">
+                            <div class="col-sm-5">
+                                
+                            <h5 class="card-title" style="text-align: left;">Humedad </h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_Humeda;?>%</h5>
+                            </div>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
@@ -194,101 +212,119 @@ if(!isset($_SESSION['username'])){
              <div class="row">
 
 
-                   <div class="col-sm-4">
-               <div class="card text-center"style="border-radius: 24px;">
-                           
-                        <div class="card-body">
-                            <h5 class="card-title">Alertas Importantes</h5>
-                            <p class="card-text">Warnings</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-                   <div class="col-sm-4">
-                    <div class="card text-center"style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Camara Publico</h5>
-                            <p class="card-text">Public Cameras</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-                   <div class="col-sm-4">
-               <div class="card text-center"style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurantes</h5>
-                            <p class="card-text">Restaurants</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-            </div>  
-            
-            <br>  
-
+                <div class="col-sm-4">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body">
             <div class="row">
-              <div style="width:505px;" class="col-sm-2">
-                 <div class="card text-center"style="border-radius: 24px;">
-                   <div style="width:450px;" class="card-body">
-                     <canvas id="myChart1"></canvas>
-                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                     <script>
-                           const ctx1 = document.getElementById('myChart1');
-
-                           new Chart(ctx1, {
-                             type: 'bar',
-                             data: {
-                               labels: ['Febrero 2024', 'Marzo 2024', 'Abril 2024'],
-                               datasets: [{
-                                 label: 'Históricos de Temperatura',
-                                 data: [5, 2, 3],
-                                 borderWidth: 1
-                               }]
-                             },
-                             options: {
-                               scales: {
-                                 y: {
-                                   beginAtZero: true
-                                 }
-                               }
-                             }
-                            });
-                     </script>
+                <div class="col-sm-12">
+                    <h5 class="card-title" style="text-align: left;">Warnings</h5>
+                    <h5 class="card-title" style="text-align: left; font-size: 40px;"><?php echo $valor_warning;?></h5>
+                    <p class="card-text" style="text-align: left;">Última actualización: <?php echo $hora_temperatura;?></p>
                 </div>
-             </div>
-           </div>
-
-
-
-  <div class="col-sm-6">
-               <div class="card text-center" style="border-radius: 24px;">
-                         
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurantes</h5>
-                            <p class="card-text">Restaurants</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5 class="card-title" style="text-align: left;">Aparcamento</h5>
+                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $valor_Aparcamento;?></h5>
                     </div>
-                  </div>
-            </div>      
+                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="col-sm-4">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5 class="card-title" style="text-align: left;">Ilumbrado</h5>
+                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $valor_alumbrado;?></h5>
+                    </div>
+                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <br>
+<div class="row">
+   <div class="col-sm-6">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body" style="width: 450px;">
+    <h5 class="card-title" style="text-align: left;">Visitantes</h5>
+            <canvas id="myChart1"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
+                const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
+
+                const ctx1 = document.getElementById('myChart1').getContext('2d');
+                new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ['Segunda-Feira', 'Terca-Feira', 'Quarta-Feira', 'Quinta-Feira'],
+                        datasets: [{
+                            label: 'Visitantes',
+                            data: [<?php echo $valor_temperatura; ?>, 30, 3, 40, 25],
+                            borderColor: 'rgb(75, 192, 192)',
+                            segment: {
+                                borderColor: ctx => skipped(ctx, 'rgb(0,0,0,0.2)') || down(ctx, 'rgb(192,75,75)'),
+                                borderDash: ctx => skipped(ctx, [6, 6]),
+                            },
+                            spanGaps: true
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<div class="col-sm-3">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-12">
+                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/luis.jpg">
+                </div>
+                <div class="col-sm-12">
+                    <h5 class="card-title" style="font-size: 15px;">Luis Rodriguez</h5>
+                    <p class="card-text" style="font-size: 15px;">Estudiante de TI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-3">
+    <div class="card text-center" style="border-radius: 24px;">
+        <div class="card-body">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-12">
+                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/andrea.jpeg">
+                </div>
+                <div class="col-sm-12">
+                    <h5 class="card-title" style="font-size: 15px;">Andrea Tobar</h5>
+                    <p class="card-text" style="font-size: 15px;">Estudiante de TI</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
- 
 
-
-
-    
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
