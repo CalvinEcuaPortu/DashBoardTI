@@ -33,7 +33,7 @@ if(!isset($_SESSION['username'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilotemp.css">
-    <meta http-equiv="refresh" content="5">
+    
   </head>
   <body style="background: #F0F3F6 ;">
 
@@ -104,7 +104,7 @@ if(!isset($_SESSION['username'])){
 
                     <a class="boton" href="../aparcamento/aparcamento.php">
                         <div class="menu-item">
-                            <span class="material-symbols-outlined" style="padding: 5px;">garage</span>
+                            <span class="material-symbols-outlined" style="padding: 5px;">local_parking</span>
                             <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
@@ -164,7 +164,7 @@ if(!isset($_SESSION['username'])){
                      <script>
 
                        const xValues = ['Enero', 'Febreiro', 'Marzo', 'Abril', 'Maio'];
-                       const yValues = [25, <?php echo "$valor_temperatura";?>, 40, 20, 39,30];
+                       const yValues = [25, <?php echo "$valor_temperatura";?>,<?php echo "$valor_temperatura";?>, 20, 39,30];
                        const barColors = ['red', 'green', 'blue', 'orange', 'brown'];
 
                        new Chart('myChart', {

@@ -34,7 +34,7 @@ if(!isset($_SESSION['username'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estiloAlu.css">
-    <meta http-equiv="refresh" content="5">
+    
   </head>
   <body style="background: #F0F3F6 ;">
 
@@ -105,7 +105,7 @@ if(!isset($_SESSION['username'])){
 
                     <a class="boton" href="../aparcamento/aparcamento.php">
                         <div class="menu-item">
-                            <span class="material-symbols-outlined" style="padding: 5px;">garage</span>
+                            <span class="material-symbols-outlined" style="padding: 5px;">local_parking</span>
                             <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
@@ -189,7 +189,7 @@ if(!isset($_SESSION['username'])){
     <div class="col-sm">
         <div class="card text-center" style="border-radius: 24px;">
             <div class="card-body">
-                <h5 class="card-title" style="text-align: left;">Consumo de electricidade</h5>
+                <h5 class="card-title" style="text-align: left;">Historico Aparcamentos</h5>
                 <table class="table">
                     <thead>
                         <tr>

@@ -33,7 +33,7 @@ if(!isset($_SESSION['username'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estiloAlu.css">
-    <meta http-equiv="refresh" content="5">
+    
   </head>
   <body style="background: #F0F3F6 ;">
 
@@ -104,7 +104,7 @@ if(!isset($_SESSION['username'])){
 
                     <a class="boton" href="../aparcamento/aparcamento.php">
                         <div class="menu-item">
-                            <span class="material-symbols-outlined" style="padding: 5px;">garage</span>
+                            <span class="material-symbols-outlined" style="padding: 5px;">local_parking</span>
                             <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
@@ -230,6 +230,60 @@ if(!isset($_SESSION['username'])){
     </div>
 </div>
 <br>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
+        <h5 class="card-title">Zona 1</h5>
+        <p class="card-text">Alumbrado Publico</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
+        <h5 class="card-title">Zona 2</h5>
+        <p class="card-text">Alumbrado Publico</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
+        <h5 class="card-title">Zona 3</h5>
+        <p class="card-text">Alumbrado Publico</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.zone-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      const image = this.closest('.card-body').querySelector('.zone-image');
+      if (this.textContent === 'On') {
+        this.textContent = 'Off';
+        image.src = image.src.replace('off', 'on');
+      } else {
+        this.textContent = 'On';
+        image.src = image.src.replace('on', 'off');
+      }
+    });
+  });
+</script>
+
+
+
+
 
 
 

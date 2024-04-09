@@ -1,4 +1,12 @@
 <?php
+
+$valor_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
+$valor_Alerta1 = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valorAlert.txt");
+$hora_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\hora.txt");
+$data_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\data.txt");
+$tipo_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\tipo.txt");
+$viento_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\viento.txt");
+
 session_start();
 
 // Si se envía el formulario de logout
@@ -28,6 +36,7 @@ if(!isset($_SESSION['username'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estiloAlerta.css">
+  
   </head>
   <body style="background: #F0F3F6 ;">
 
@@ -40,7 +49,7 @@ if(!isset($_SESSION['username'])){
    <br>
    <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
      <div class="container-fluid">
-       <div class="menu-item" href="../Dash/dash.php">
+        <div class="menu-item" href="../Dash/dash.php">
         <img src="../imagenes/logo.png" style="width:40px; ">
         <a class="navbar-brand"><b>Navbar</b></a>
       </div>
@@ -98,7 +107,7 @@ if(!isset($_SESSION['username'])){
 
                     <a class="boton" href="../aparcamento/aparcamento.php">
                         <div class="menu-item">
-                            <span class="material-symbols-outlined" style="padding: 5px;">garage</span>
+                            <span class="material-symbols-outlined" style="padding: 5px;">local_parking</span>
                             <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
@@ -114,14 +123,14 @@ if(!isset($_SESSION['username'])){
             <br>
         </div>
        
+         <div class="col-sm-8">
         <div class="col-sm-8">
-        <div class="col-sm-4">
            <div class="main--content">
              <div class="header--wrapper">
                 <div class="header--title">
                    <div class="menu-item" >
-                      <h2 style="display: inline-block; padding-right: 688px;" >Alertas Climaticas</h2>
-                      <div class="col-sm-5">
+                      <h2 style="display: inline-block; padding-right: 672px;" >Warnings</h2>
+                      <div class="col-sm">
                          <div class="card text-center" style="border-radius: 24px; display: inline-block; margin-left: 20px;">   
                             <div class="card-body" >
                                <div class="menu-item">
@@ -147,102 +156,90 @@ if(!isset($_SESSION['username'])){
            </div>
          </div>
 
-   
-            <div class="row">
-
-                   <div class="col-sm-4">
-                    <div class="card text-center" style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Alumbrado Publico</h5>
-                            <p class="card-text">Ligth</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
+<div class="row justify-content-center">
+    <div class="col-sm">
+        <div class="card text-center" style="border-radius: 24px;">
+            <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img style="border-radius: 24px;" src="../imagenes/principal1.jpg" class="d-block w-100" alt="Slide 1">
                     </div>
-                  </div>
-
-
-                   <div class="col-sm-4">
-               <div class="card text-center" style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Temperatura ambiente</h5>
-                            <p class="card-text">Temperature</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
+                    <div class="carousel-item">
+                        <img style="border-radius: 24px;" src="../imagenes/verde1.jpg" class="d-block w-100" alt="Slide 2">
                     </div>
-                  </div>
-
-
-                  <div class="col-sm-4">
-                    <div class="card text-center" style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Humedad ambiente</h5>
-                            <p class="card-text">Humidity</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
+                    <div class="carousel-item">
+                        <img style="border-radius: 24px;" src="../imagenes/amarillo1.jpg" class="d-block w-100" alt="Slide 3">
                     </div>
-                  </div>
-
+                    <div class="carousel-item">
+                        <img style="border-radius: 24px;" src="../imagenes/rojo1.jpg" class="d-block w-100" alt="Slide 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img style="border-radius: 24px;" src="../imagenes/negro1.jpg" class="d-block w-100" alt="Slide 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-              
-              <br>
-
-             <div class="row">
-
-
-                   <div class="col-sm-4">
-               <div class="card text-center" style="border-radius: 24px;">
-                           
-                        <div class="card-body">
-                            <h5 class="card-title">Alertas Importantes</h5>
-                            <p class="card-text">Warnings</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-                   <div class="col-sm-4">
-                    <div class="card text-center" style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Camara Publico</h5>
-                            <p class="card-text">Public Cameras</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-                   <div class="col-sm-4">
-               <div class="card text-center" style="border-radius: 24px;">
-                            
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurantes</h5>
-                            <p class="card-text">Restaurants</p>
-                            <a href="#" class="btn btn-primary">Apagado</a>
-                        </div>
-                    </div>
-                  </div>
-
-
-            </div>  
-            
-            <br>  
-
-   
-<br>
         </div>
     </div>
 </div>
 
- 
 
+<br>
+<div class="row justify-content-center">
+    <div class="col-sm">
+        <div class="card text-center" style="border-radius: 24px;">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: left;">Alertas</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Temperatura</th>
+                            <th scope="col">Data de actualizacao</th>
+                            <th scope="col">Hora de actualizacao</th>
+                            <th scope="col">Alertas</th>
+                            <th scope="col">Vientos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?php echo "$valor_Alerta1";?>°C</td>
+                            <td><?php echo "$data_Alerta";  ?></td>
+                            <td><?php echo "$hora_Alerta";  ?></td>
+                            <td><?php echo "$tipo_Alerta";  ?></td>
+                            <td><?php echo "$viento_Alerta"; ?>km</td>
 
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 
-    
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
