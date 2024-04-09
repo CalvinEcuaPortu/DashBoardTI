@@ -89,17 +89,17 @@ if(!isset($_SESSION['username'])){
                         </div>
                     </a>
 
-                    <a class="boton" href="../camara/camara.php">
+                    <a class="boton" href="../alertas/alertas.php">
                         <div class="menu-item">
                             <span class="material-symbols-outlined" style="padding: 5px;">emergency_home</span>
                             <p class="card-text">Alertas</p>
                         </div>
                     </a>
 
-                    <a class="boton" href="../alertas/alertas.php">
+                    <a class="boton" href="../aparcamento/aparcamento.php">
                         <div class="menu-item">
-                            <span class="material-symbols-outlined" style="padding: 5px;">videocam</span>
-                            <p class="card-text">Camaras</p>
+                            <span class="material-symbols-outlined" style="padding: 5px;">garage</span>
+                            <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
                   </div>
