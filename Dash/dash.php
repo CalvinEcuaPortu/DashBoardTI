@@ -255,44 +255,49 @@ if(!isset($_SESSION['username'])){
 </div>
 <br>
 <div class="row">
-   <div class="col-sm-6">
-    <div class="card text-center" style="border-radius: 24px;">
-        <div class="card-body" style="width: 450px;">
-    <h5 class="card-title" style="text-align: left;">Visitantes</h5>
-            <canvas id="myChart1"></canvas>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
-                const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
-                const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
-
-                const ctx1 = document.getElementById('myChart1').getContext('2d');
-                new Chart(ctx1, {
-                    type: 'line',
-                    data: {
+    <div class="col-sm-6">
+        <div class="card text-center" style="border-radius: 24px;">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: left;">Visitantes</h5>
+                <canvas id="myChart1" style="max-width: 400px; max-height: 216px;"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const data = {
                         labels: ['Segunda-Feira', 'Terca-Feira', 'Quarta-Feira', 'Quinta-Feira'],
                         datasets: [{
                             label: 'Visitantes',
                             data: [<?php echo $valor_temperatura; ?>, 30, 3, 40, 25],
-                            borderColor: 'rgb(75, 192, 192)',
-                            segment: {
-                                borderColor: ctx => skipped(ctx, 'rgb(0,0,0,0.2)') || down(ctx, 'rgb(192,75,75)'),
-                                borderDash: ctx => skipped(ctx, [6, 6]),
-                            },
-                            spanGaps: true
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)'
+                            ],
+                            hoverOffset: 4
                         }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                    };
+
+                    const config = {
+                        type: 'doughnut',
+                        data: data,
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    position: 'right'
+                                }
                             }
                         }
-                    }
-                });
-            </script>
+                    };
+
+                    const ctx1 = document.getElementById('myChart1').getContext('2d');
+                    new Chart(ctx1, config);
+                </script>
+            </div>
         </div>
     </div>
-</div>
+
+
 <div class="col-sm-3">
     <div class="card text-center" style="border-radius: 24px;">
         <div class="card-body">

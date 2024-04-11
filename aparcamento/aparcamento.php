@@ -231,6 +231,57 @@ if(!isset($_SESSION['username'])){
     </div>
 </div>
 <br>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/aparca_Fechar.jpg">
+        <h5 class="card-title">Estacionamiento 1</h5>
+        <p class="card-text">Zona 1</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">Abrir</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/aparca_Fechar.jpg">
+        <h5 class="card-title">Estacionamiento 2</h5>
+        <p class="card-text">Zona 2</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">Abrir</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
+      <div class="card-body">
+        <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/aparca_Fechar.jpg">
+        <h5 class="card-title">Estacionamiento 3</h5>
+        <p class="card-text">Zona 3</p>
+        <a href="#" class="btn btn-primary zone-button" style="width: 100px;">Abrir</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.zone-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      const image = this.closest('.card-body').querySelector('.zone-image');
+      if (this.textContent === 'Abrir') {
+        this.textContent = 'Fechar';
+        image.src = image.src.replace('Fechar', 'Abrir');
+      } else {
+        this.textContent = 'Abrir';
+        image.src = image.src.replace('Abrir', 'Fechar');
+      }
+    });
+  });
+</script>
+<br>
 
 
 

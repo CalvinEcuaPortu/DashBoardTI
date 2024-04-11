@@ -235,8 +235,8 @@ if(!isset($_SESSION['username'])){
     <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
       <div class="card-body">
         <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
-        <h5 class="card-title">Zona 1</h5>
-        <p class="card-text">Alumbrado Publico</p>
+        <h5 class="card-title">Alumbrado Publico</h5>
+        <p class="card-text">Zona 1</p>
         <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
       </div>
     </div>
@@ -246,8 +246,8 @@ if(!isset($_SESSION['username'])){
     <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
       <div class="card-body">
         <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
-        <h5 class="card-title">Zona 2</h5>
-        <p class="card-text">Alumbrado Publico</p>
+        <h5 class="card-title">Alumbrado Publico</h5>
+        <p class="card-text">Zona 2</p>
         <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
       </div>
     </div>
@@ -257,8 +257,8 @@ if(!isset($_SESSION['username'])){
     <div class="card text-center mb-3" style="width: 18rem; border-radius: 24px;">
       <div class="card-body">
         <img class="zone-image" style="width: 10rem; border-radius: 24px;" src="../imagenes/street_off.jpg">
-        <h5 class="card-title">Zona 3</h5>
-        <p class="card-text">Alumbrado Publico</p>
+        <h5 class="card-title">Alumbrado Publico</h5>
+        <p class="card-text">Zona 3</p>
         <a href="#" class="btn btn-primary zone-button" style="width: 100px;">On</a>
       </div>
     </div>
