@@ -48,3 +48,11 @@
   background-color: #28a745;
   color: #fff;
 }
+
+.alert-circle {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        vertical-align: middle; /* Centra verticalmente */
+    }

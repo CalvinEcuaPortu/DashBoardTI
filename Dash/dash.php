@@ -1,12 +1,35 @@
 <?php
+
 $valor_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt");
 $valor_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt");
 $valor_electricida = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt");
-$valor_warning = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
-$valor_alumbrado = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Alumbrado\\valor.txt");
 $valor_Aparcamento = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Aparcamento\\valor.txt");
 $hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
-$nome_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\nombre.txt");
+$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
+$valor_visitas = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Visitas\\visitas.txt");
+
+
+$valor_alumbrado = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Alumbrado\\valor.txt");
+$valor_warning = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_temperatura = end($lines);
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_Humeda = end($lines);
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_electricida = end($lines);
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Aparcamento\\valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_Aparcamento = end($lines);
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_hora_temperatura = end($lines);
+
+$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_data_temperatura = end($lines);
+
 session_start();
 
 // Si se envía el formulario de logout
@@ -32,10 +55,11 @@ if(!isset($_SESSION['username'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DashBoardTI</title>
+    <title>OceanView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilo/estilosD.css">
+     <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
     
   </head>
   <body style="background: #F0F3F6 ;">
@@ -51,7 +75,7 @@ if(!isset($_SESSION['username'])){
      <div class="container-fluid">
       <div class="menu-item" href="../Dash/dash.php">
         <img src="../imagenes/logo.png" style="width:40px; ">
-        <a class="navbar-brand"><b>Navbar</b></a>
+        <a class="navbar-brand"><b>OceanView</b></a>
       </div>
      
        <form class="d-flex" role="search">
@@ -129,6 +153,7 @@ if(!isset($_SESSION['username'])){
            <div class="main--content">
              <div class="header--wrapper">
                 <div class="header--title">
+                      <p class="card-title" style="font-size:24px; margin-bottom:-16px;">Welcome <?php echo $_SESSION['username'];?></p><br>
                    <div class="menu-item" >
                       <h2 style="display: inline-block; padding-right: 680px;" >DashBoard</h2>
                       <div class="col-sm-5">
@@ -161,19 +186,20 @@ if(!isset($_SESSION['username'])){
    
             <div class="row">
 
-                   <div class="col-sm-4">
+            <div class="col-sm-4">
                     <div class="card text-center" style="border-radius: 24px;">
                             
                         <div class="card-body">
                             <div class="col-sm-7">
                                 
                             <h5 class="card-title" style="text-align: left;">Electricidade </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_electricida;?>kWh</h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_electricida;?>kWh</h5>
                             </div>
-                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
+
 
 
                    <div class="col-sm-4">
@@ -183,9 +209,9 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-5">
                                 
                             <h5 class="card-title" style="text-align: left;">Temperatura </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_temperatura;?>°C</h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_temperatura;?>°C</h5>
                             </div>
-                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
@@ -198,9 +224,9 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-5">
                                 
                             <h5 class="card-title" style="text-align: left;">Humedad </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $valor_Humeda;?>%</h5>
+                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Humeda;?>%</h5>
                             </div>
-                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                            <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
                     </div>
                   </div>
@@ -219,7 +245,7 @@ if(!isset($_SESSION['username'])){
                 <div class="col-sm-12">
                     <h5 class="card-title" style="text-align: left;">Warnings</h5>
                     <h5 class="card-title" style="text-align: left; font-size: 40px;"><?php echo $valor_warning;?></h5>
-                    <p class="card-text" style="text-align: left;">Última actualización: <?php echo $hora_temperatura;?></p>
+                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
             </div>
         </div>
@@ -231,9 +257,9 @@ if(!isset($_SESSION['username'])){
             <div class="row">
                 <div class="col-sm-6">
                     <h5 class="card-title" style="text-align: left;">Aparcamento</h5>
-                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $valor_Aparcamento;?></h5>
+                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Aparcamento;?> P</h5>
                     </div>
-                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
             </div>
         </div>
@@ -247,7 +273,7 @@ if(!isset($_SESSION['username'])){
                     <h5 class="card-title" style="text-align: left;">Ilumbrado</h5>
                     <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $valor_alumbrado;?></h5>
                     </div>
-                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $hora_temperatura;?></p>
+                    <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
             </div>
         </div>
@@ -259,42 +285,42 @@ if(!isset($_SESSION['username'])){
         <div class="card text-center" style="border-radius: 24px;">
             <div class="card-body">
                 <h5 class="card-title" style="text-align: left;">Visitantes</h5>
-                <canvas id="myChart1" style="max-width: 400px; max-height: 216px;"></canvas>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script>
-                    const data = {
-                        labels: ['Segunda-Feira', 'Terca-Feira', 'Quarta-Feira', 'Quinta-Feira'],
-                        datasets: [{
-                            label: 'Visitantes',
-                            data: [<?php echo $valor_temperatura; ?>, 30, 3, 40, 25],
-                            backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)'
-                            ],
-                            hoverOffset: 4
-                        }]
-                    };
+               <canvas id="myChart1" style="max-width: 400px; max-height: 216px;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Obtener los valores de temperatura válidos para el gráfico
+    const yValues = [<?php
+        $valid_visitas = array_filter(explode(PHP_EOL, $valor_visitas), function($value) {
+            return !empty($value);
+        });
+        echo implode(",", $valid_visitas);
+    ?>];
+    const xValues = ['Enero', 'Febreiro', 'Marzo', 'Abril', 'Maio'];
+    const barColors = ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(153, 102, 255)'];
 
-                    const config = {
-                        type: 'doughnut',
-                        data: data,
-                        options: {
-                            plugins: {
-                                legend: {
-                                    display: true,
-                                    position: 'right'
-                                }
-                            }
-                        }
-                    };
+    new Chart('myChart1', { // Cambiado de 'myChart' a 'myChart1'
+        type: 'doughnut', // Cambiado el tipo de gráfico a 'doughnut' para pastel
+        data: {
+            labels: xValues.slice(0, yValues.length), // Asegurar que haya la misma cantidad de etiquetas que de valores
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'right'
+                }
+            }
+        }
+    });
+</script>
 
-                    const ctx1 = document.getElementById('myChart1').getContext('2d');
-                    new Chart(ctx1, config);
-                </script>
             </div>
         </div>
+    <br>
     </div>
 
 

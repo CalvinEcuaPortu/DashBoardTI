@@ -1,12 +1,27 @@
 <?php
 
-$valor_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
-$valor_Alerta1 = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valorAlert.txt");
-$hora_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\hora.txt");
-$data_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\data.txt");
-$tipo_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\tipo.txt");
-$viento_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\viento.txt");
+$valor_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\tipo.txt");
+$viento_Alerta = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Vientos\\vientos.txt");
 
+$valor_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt");
+$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
+$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
+
+// Función para obtener el color de la alerta según el valor
+function getAlertColor($alertValue) {
+    switch ($alertValue) {
+        case "High":
+            return "red"; // Rojo para alerta alta
+        case "Medium":
+            return "yellow"; // Amarillo para alerta media
+        case "Low":
+            return "lightgreen"; // Verde claro para alerta baja
+        case "Null":
+            return "#010707"; // Negro para ninguna alerta
+        default:
+            return "#FFFFFF"; // Gris por defecto
+    }
+}
 session_start();
 
 // Si se envía el formulario de logout
@@ -32,13 +47,14 @@ if(!isset($_SESSION['username'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DashBoardTI</title>
+    <title>OceanView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" type="text/css" href="estiloAlerta.css">
+    <link rel="stylesheet" type="text/css" href="estiloAlerta1.css">
+     <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
   
   </head>
-  <body style="background: #F0F3F6 ;">
+  <body style="background: #F1F3F6 ;">
 
 
 
@@ -47,11 +63,11 @@ if(!isset($_SESSION['username'])){
 
 <div class="container-fluid">
    <br>
-   <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+   <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); background-color: #FFFFFF;">
      <div class="container-fluid">
         <div class="menu-item" href="../Dash/dash.php">
         <img src="../imagenes/logo.png" style="width:40px; ">
-        <a class="navbar-brand"><b>Navbar</b></a>
+        <a class="navbar-brand"><b>OceanView</b></a>
       </div>
        <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -129,7 +145,7 @@ if(!isset($_SESSION['username'])){
              <div class="header--wrapper">
                 <div class="header--title">
                    <div class="menu-item" >
-                      <h2 style="display: inline-block; padding-right: 672px;" >Warnings</h2>
+                      <h2 style="display: inline-block; padding-right: 672px; " >Warnings</h2>
                       <div class="col-sm">
                          <div class="card text-center" style="border-radius: 24px; display: inline-block; margin-left: 20px;">   
                             <div class="card-body" >
@@ -162,7 +178,7 @@ if(!isset($_SESSION['username'])){
             <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img style="border-radius: 24px;" src="../imagenes/principal1.jpg" class="d-block w-100" alt="Slide 1">
+                        <img style="border-radius: 24px;" src="../imagenes/principal11.jpg" class="d-block w-100" alt="Slide 1">
                     </div>
                     <div class="carousel-item">
                         <img style="border-radius: 24px;" src="../imagenes/verde1.jpg" class="d-block w-100" alt="Slide 2">
@@ -192,14 +208,16 @@ if(!isset($_SESSION['username'])){
 
 
 <br>
+
 <div class="row justify-content-center">
     <div class="col-sm">
         <div class="card text-center" style="border-radius: 24px;">
             <div class="card-body">
-                <h5 class="card-title" style="text-align: left;">Alertas</h5>
+                <h5 class="card-title" style="text-align: left;">Historico Warnings</h5>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Check</th>
                             <th scope="col">Temperatura</th>
                             <th scope="col">Data de actualizacao</th>
                             <th scope="col">Hora de actualizacao</th>
@@ -208,36 +226,49 @@ if(!isset($_SESSION['username'])){
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><?php echo "$valor_Alerta1";?>°C</td>
-                            <td><?php echo "$data_Alerta";  ?></td>
-                            <td><?php echo "$hora_Alerta";  ?></td>
-                            <td><?php echo "$tipo_Alerta";  ?></td>
-                            <td><?php echo "$viento_Alerta"; ?>km</td>
-
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                        </tr>
+                        <?php
+                        // Dividir el contenido del archivo de valores en un array de líneas
+                        $valores = explode(PHP_EOL, $valor_temperatura);
+                        // Dividir el contenido del archivo de hora en un array de líneas
+                        $horas = explode(PHP_EOL, $hora_temperatura);
+                        // Dividir el contenido del archivo de fecha en un array de líneas
+                        $fechas = explode(PHP_EOL, $data_temperatura);
+                        // Dividir el contenido del archivo de fecha en un array de líneas
+                        $alerta = explode(PHP_EOL, $valor_Alerta);
+                        // Dividir el contenido del archivo de fecha en un array de líneas
+                        $viento = explode(PHP_EOL, $viento_Alerta);
+                        
+                        // Contador para el id del checkbox
+                        $checkbox_id = 1;
+                        // Iterar sobre cada valor de temperatura y mostrarlo en una fila de la tabla
+                        foreach ($valores as $key => $valor) {
+                            // Verificar si el valor de temperatura es válido
+                            if (!empty($valor)) {
+                                echo "<tr>";
+                                echo "<td>";
+                                echo "<input class='form-check-input me-1' type='checkbox' value='' id='checkbox$checkbox_id'>";
+                                echo "</td>";
+                                // Verificar si el índice actual existe en el array de horas antes de mostrarlo
+                                $hora = isset($horas[$key]) ? $horas[$key] : '';
+                                $fecha = isset($fechas[$key]) ? $fechas[$key] : '';
+                                echo "<td>$valor °C</td>";
+                                echo "<td>$fecha</td>";
+                                echo "<td>$hora</td>";
+                                // Añadir la bolita de color que cambia según el valor de alerta
+                                echo "<td><div class='alert-circle ' style='background-color: " . getAlertColor($alerta[$key]) . ";'></div></td>";
+                                echo "<td>$viento[$key]</td>"; // Cambiado de $viento a $viento[$key]
+                                echo "</tr>";
+                                $checkbox_id++;
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 <br>
 
 

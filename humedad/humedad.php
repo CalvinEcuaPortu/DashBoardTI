@@ -2,8 +2,8 @@
 <?php
 
 $valor_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt");
-$hora_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\Hora.txt");
-$data_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\data.txt");
+$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
+$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
 
 session_start();
 
@@ -30,10 +30,11 @@ if(!isset($_SESSION['username'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DashBoardTI</title>
+    <title>OceanView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilotemp.css">
+     <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
     
   </head>
   <body style="background: #F0F3F6 ;">
@@ -49,7 +50,7 @@ if(!isset($_SESSION['username'])){
      <div class="container-fluid">
         <div class="menu-item" href="../Dash/dash.php">
         <img src="../imagenes/logo.png" style="width:40px; ">
-        <a class="navbar-brand"><b>Navbar</b></a>
+        <a class="navbar-brand"><b>OceanView</b></a>
       </div>
        <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -158,39 +159,44 @@ if(!isset($_SESSION['username'])){
     <div class="col-sm">
         <div class="card text-center" style="border-radius: 24px;">
             <div class="card-body">
-                <h5 class="card-title" style="text-align: left;">Historico de Humedad(%)</h5>
+                <h5 class="card-title" style="text-align: left;">Historico de Humedad (%)</h5>
                 <canvas id="myChart"></canvas>
-               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                       
-                     <script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    // Obtener los valores de temperatura válidos para el gráfico
+                    const yValues = [<?php
+                        $valid_Humidity = array_filter(explode(PHP_EOL, $valor_Humeda), function($value) {
+                            return !empty($value);
+                        });
+                        echo implode(",", $valid_Humidity);
+                    ?>];
+                    const xValues = ['Enero', 'Febreiro', 'Marzo', 'Abril', 'Maio'];
+                    const barColors = ['red', 'green', 'blue', 'orange', 'brown'];
 
-                       const xValues = ['Enero', 'Febreiro', 'Marzo', 'Abril', 'Maio'];
-                       const yValues = [25, <?php echo "$valor_Humeda";?>,<?php echo "$valor_Humeda";?>, <?php echo "$valor_Humeda";?>, 39,30];
-                       const barColors = ['red', 'green', 'blue', 'orange', 'brown'];
-
-                       new Chart('myChart', {
-                       type: 'line',
-                       data: {
-                       labels: xValues,
-                       datasets: [{
-                       backgroundColor: barColors,
-                       data: yValues
-                       }]
-                       },
-                       options: {
-                       }
-                       });
-                     </script>
+                    new Chart('myChart', {
+                        type: 'line',
+                        data: {
+                            labels: xValues.slice(0, yValues.length), // Asegurar que haya la misma cantidad de etiquetas que de valores
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {}
+                    });
+                </script>
             </div>
         </div>
     </div>
 </div>
+
 <br>
+
 <div class="row justify-content-center">
     <div class="col-sm">
         <div class="card text-center" style="border-radius: 24px;">
             <div class="card-body">
-                <h5 class="card-title" style="text-align: left;">Historico de Humedad</h5>
+                <h5 class="card-title" style="text-align: left;">Historico Humedad</h5>
                 <table class="table">
                     <thead>
                         <tr>
@@ -201,30 +207,34 @@ if(!isset($_SESSION['username'])){
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                            </td>
-                            <td><?php echo "$valor_Humeda";?>°C</td>
-                            <td><?php echo "$data_Humeda";  ?></td>
-                            <td><?php echo "$hora_Humeda";  ?></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php
+                        // Dividir el contenido del archivo de valores en un array de líneas
+                        $valores = explode(PHP_EOL, $valor_Humeda);
+                        // Dividir el contenido del archivo de hora en un array de líneas
+                        $horas = explode(PHP_EOL, $hora_temperatura);
+                        // Dividir el contenido del archivo de fecha en un array de líneas
+                        $fechas = explode(PHP_EOL, $data_temperatura);
+                        // Contador para el id del checkbox
+                        $checkbox_id = 1;
+                        // Iterar sobre cada valor de temperatura y mostrarlo en una fila de la tabla
+                        foreach ($valores as $key => $valor) {
+                            // Verificar si el valor de temperatura es válido
+                            if (!empty($valor)) {
+                                echo "<tr>";
+                                echo "<td>";
+                                echo "<input class='form-check-input me-1' type='checkbox' value='' id='checkbox$checkbox_id'>";
+                                echo "</td>";
+                                // Verificar si el índice actual existe en el array de horas antes de mostrarlo
+                                $hora = isset($horas[$key]) ? $horas[$key] : '';
+                                $fecha = isset($fechas[$key]) ? $fechas[$key] : '';
+                                echo "<td>$valor %</td>";
+                                echo "<td>$fecha</td>";
+                                echo "<td>$hora</td>";
+                                echo "</tr>";
+                                $checkbox_id++;
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
