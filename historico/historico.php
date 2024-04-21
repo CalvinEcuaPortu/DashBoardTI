@@ -58,8 +58,8 @@ if(!isset($_SESSION['username'])){
    <br>
    <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
      <div class="container-fluid">
-        <div class="menu-item" href="../Dash/dash.php">
-        <img src="../imagenes/logo.png" style="width:40px; ">
+        <div class="menu-item">
+        <img src="../imagenes/logo.png" style="width:40px;" alt="logo">
         <a class="navbar-brand"><b>OceanView</b></a>
       </div>
       <span class="material-symbols-outlined">account_circle</span>
@@ -196,10 +196,14 @@ if(!isset($_SESSION['username'])){
 <div id="table1" style="display: none;">
     <table class="table">
         <thead>
-            <div class="menu-item">
-                <span class="material-symbols-outlined" style="padding: 5px;">humidity_percentage</span>
-                <h5 class="card-text">Humedad</h5>
-            </div>
+            <tr>
+                <th colspan="5"> <!-- Assuming you want the menu-item to span across all columns -->
+                    <div class="menu-item">
+                        <span class="material-symbols-outlined" style="padding: 5px;">humidity_percentage</span>
+                        <h5 class="card-text">Humedad</h5>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th scope="col">Check</th>
                 <th scope="col">Tipo</th>
@@ -248,10 +252,14 @@ if(!isset($_SESSION['username'])){
 <div id="table2" style="display: none;">
     <table class="table">
         <thead>
-            <div class="menu-item">
-                <span class="material-symbols-outlined" style="padding: 5px;">thermometer</span>
-                <h5 class="card-text">Temperatura</h5>
-            </div>
+            <tr>
+                <th colspan="5"> <!-- Assuming you want the menu-item to span across all columns -->
+                    <div class="menu-item">
+                        <span class="material-symbols-outlined" style="padding: 5px;">thermometer</span>
+                        <h5 class="card-text">Temperatura</h5>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th scope="col">Check</th>
                 <th scope="col">Tipo</th>
@@ -300,10 +308,14 @@ if(!isset($_SESSION['username'])){
 <div id="table3" style="display: none;">
     <table class="table">
         <thead>
-            <div class="menu-item">
-                <span class="material-symbols-outlined" style="padding: 5px;">lightbulb</span>
-                <h5 class="card-text">Iluminacion</h5>
-            </div>
+            <tr>
+                <th colspan="5"> <!-- Assuming you want the menu-item to span across all columns -->
+                    <div class="menu-item">
+                        <span class="material-symbols-outlined" style="padding: 5px;">lightbulb</span>
+                        <h5 class="card-text">Iluminacion</h5>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th scope="col">Check</th>
                 <th scope="col">Tipo</th>
@@ -353,10 +365,14 @@ if(!isset($_SESSION['username'])){
 <div id="table4" style="display: none;">
     <table class="table">
         <thead>
-            <div class="menu-item">
-                <span class="material-symbols-outlined" style="padding: 5px;">directions_car</span>
-                <h5 class="card-text">Aparcamento</h5>
-            </div>
+            <tr>
+                <th colspan="5"> <!-- Assuming you want the menu-item to span across all columns -->
+                    <div class="menu-item">
+                        <span class="material-symbols-outlined" style="padding: 5px;">directions_car</span>
+                        <h5 class="card-text">Aparcamento</h5>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th scope="col">Check</th>
                 <th scope="col">Tipo</th>
@@ -419,16 +435,12 @@ if(!isset($_SESSION['username'])){
         showTable(1);
     };
 </script>
-
-
-                
+            
             </div>
         </div>
     </div>
 </div>
 <br>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

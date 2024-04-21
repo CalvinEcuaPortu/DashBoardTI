@@ -38,17 +38,12 @@ if(!isset($_SESSION['username'])){
   </head>
   <body style="background: #2E4053 ;">
 
-
-
-
-
-
 <div class="container-fluid">
    <br>
    <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
      <div class="container-fluid">
-        <div class="menu-item" href="../Dash/dash.php">
-        <img src="../imagenes/logo.png" style="width:40px; ">
+        <div class="menu-item">
+        <img src="../imagenes/logo.png" style="width:40px;" alt="logo">
         <a class="navbar-brand"><b>OceanView</b></a>
       </div>
       <span class="material-symbols-outlined">account_circle</span>

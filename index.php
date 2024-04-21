@@ -3,12 +3,16 @@ session_start();
 
 $users = [
     "Luis" => '$2y$10$IJKD1ADf2/F7CU1CQStZzeqPXV2sjiAYZO7lhTzZkOmRUgivbvY/K', // Contraseña de Luis
-    "Andrea" => password_hash("password", PASSWORD_DEFAULT) // Contraseña de Andrea
+    "Andrea" => '$2y$10$m4lScUaTbmQH/jgqxx65OegcUciBstdd4XQZ8QAUil28TAdSZ.qmS', // Contraseña de Andrea (Andrea2024)
 ];
+
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
-    if (isset($users[$username]) && password_verify($_POST['password'], $users[$username])) {
+    $password = $_POST['password']; // Contraseña en texto plano ingresada por el usuario
+    
+
+    if (isset($users[$username]) && password_verify($password, $users[$username])) {
         echo "Credenciales correctas";
         $_SESSION['username'] = $username;
         header("Location: Dash/dash.php");
@@ -18,6 +22,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     }
 }
 ?>
+
 
 
 <!doctype html>

@@ -57,34 +57,32 @@ if(!isset($_SESSION['username'])){
     exit(); // Importante: detener la ejecución del script después de la redirección
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OceanView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilo/estilosD.css">
-     <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
-
-    
-  </head>
-  <body style="background: #2E4053 ;">
+    <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
+</head>
+<body style="background: #2E4053;">
 
 <div class="container-fluid">
-   <br>
-   <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
-     <div class="container-fluid">
-      <div class="menu-item" href="../Dash/dash.php">
-        <img src="../imagenes/logo.png" style="width:40px; ">
-        <a class="navbar-brand"><b>OceanView</b></a>
-      </div>
-      <span class="material-symbols-outlined">account_circle</span>
-     </div>
-   </nav>
-   <br>
- </div>
+    <br>
+    <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+        <div class="container-fluid">
+            <div class="menu-item">
+                <img src="../imagenes/logo.png" style="width: 40px;" alt="logo">
+                <a class="navbar-brand" href="#"><b>OceanView</b></a>
+            </div>
+            <span class="material-symbols-outlined">account_circle</span>
+        </div>
+    </nav>
+    <br>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -93,14 +91,13 @@ if(!isset($_SESSION['username'])){
                 <div class="card-body">
                     <h5 class="card-title">Menu</h5>
 
-                   <div class="d-flex flex-column">
-                    <a class="boton">
-                        <div class="menu-item" href="../Dash/dash.php">
-                            <span class="material-symbols-outlined" style="padding: 5px;">widgets</span>
-                            <p class="card-text">Dashboard</p>
-                        </div>
-                    </a>
-
+                    <div class="d-flex flex-column">
+                        <a class="boton" href="../Dash/dash.php">
+                            <div class="menu-item">
+                                <span class="material-symbols-outlined" style="padding: 5px;">widgets</span>
+                                <p class="card-text">Dashboard</p>
+                            </div>
+                        </a>
                     <a class="boton" href="../historico/historico.php">
                         <div class="menu-item">
                             <span class="material-symbols-outlined" style="padding: 5px;">timeline</span>
@@ -146,21 +143,23 @@ if(!isset($_SESSION['username'])){
                   </div>
                     <br>
 
-                    <form class="d-flex" role="search" action="../index.php" method="POST">
-                        <button class="btn btn-outline-success" type="submit" >Logout</button>
+                     <form class="d-flex" role="search" action="../index.php" method="POST">
+                        <button class="btn btn-outline-success" type="submit">Logout</button>
                     </form>
                     <br>
                 </div>
             </div>
             <br>
         </div>
+
        
         <div class="col-sm-8">
         <div class="col-sm-4">
            <div class="main--content">
              <div class="header--wrapper">
                 <div class="header--title">
-                      <p class="card-title" style="font-size:24px; margin-bottom:-16px; color:#D0D3D4 ">Welcome <?php echo $_SESSION['username'];?></p><br>
+                    <p class="card-title" style="font-size: 24px; margin-bottom: -16px; color: #D0D3D4;">Welcome <?php echo $_SESSION['username']; ?></p><br>
+
                    <div class="menu-item" >
                       <h2 style="display: inline-block; padding-right: 672px; color: #FDFEFE ;" >DashBoard</h2>
                       <div class="col-sm-5">
@@ -200,7 +199,7 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-7">
                                 
                             <h5 class="card-title" style="text-align: left;">Electricidade </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_electricida;?>kWh</h5>
+                            <h5 class="card-title" style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_electricida;?>kWh</h5>
                             </div>
                             <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
@@ -214,7 +213,7 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-5">
                                 
                             <h5 class="card-title" style="text-align: left;">Temperatura </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_temperatura;?>°C</h5>
+                            <h5 class="card-title" style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_temperatura;?>°C</h5>
                             </div>
                             <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
@@ -223,13 +222,13 @@ if(!isset($_SESSION['username'])){
 
 
                   <div class="col-sm-4">
-                    <div class="card text-center"style="border-radius: 24px;">
+                    <div class="card text-center" style="border-radius: 24px;">
                             
                      <div class="card-body">
                             <div class="col-sm-5">
                                 
                             <h5 class="card-title" style="text-align: left;">Humedad </h5>
-                            <h5 class="card-title "style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Humeda;?>%</h5>
+                            <h5 class="card-title" style="text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Humeda;?>%</h5>
                             </div>
                             <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                         </div>
@@ -262,7 +261,7 @@ if(!isset($_SESSION['username'])){
             <div class="row">
                 <div class="col-sm-6">
                     <h5 class="card-title" style="text-align: left;">Aparcamento</h5>
-                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Aparcamento;?> P</h5>
+                    <h5 class="card-title" style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Aparcamento;?> P</h5>
                     </div>
                     <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
@@ -276,7 +275,7 @@ if(!isset($_SESSION['username'])){
             <div class="row">
                 <div class="col-sm-6">
                     <h5 class="card-title" style="text-align: left;">Ilumbrado</h5>
-                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Alumbrado;?></h5>
+                    <h5 class="card-title" style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Alumbrado;?></h5>
                     </div>
                     <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
@@ -334,7 +333,7 @@ if(!isset($_SESSION['username'])){
         <div class="card-body">
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-12">
-                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/luis.jpg">
+                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/luis.jpg" alt="persona1" >
                 </div>
                 <div class="col-sm-12">
                     <h5 class="card-title" style="font-size: 15px;">Luis Rodriguez</h5>
@@ -349,7 +348,7 @@ if(!isset($_SESSION['username'])){
         <div class="card-body">
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-12">
-                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/andrea.jpeg">
+                    <img style="width: 138px; border-radius: 14px; margin-bottom: 10px;" src="../imagenes/andrea.jpeg" alt="persona2" >
                 </div>
                 <div class="col-sm-12">
                     <h5 class="card-title" style="font-size: 15px;">Andrea Tobar</h5>
@@ -357,14 +356,14 @@ if(!isset($_SESSION['username'])){
                 </div>
             </div>
         </div>
-    </div>
+   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    
+</script>
+</body>
 </html>
-
-
-
-
-

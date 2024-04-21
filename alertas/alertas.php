@@ -57,8 +57,8 @@ if(!isset($_SESSION['username'])){
        <br>
        <nav class="navbar" style="border-radius: 32px; padding: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); background-color: #FFFFFF;">
          <div class="container-fluid">
-            <div class="menu-item" href="../Dash/dash.php">
-            <img src="../imagenes/logo.png" style="width:40px; ">
+            <div class="menu-item">
+            <img src="../imagenes/logo.png" alt="logo" style="width:40px;">
             <a class="navbar-brand"><b>OceanView</b></a>
           </div>
           <span class="material-symbols-outlined">account_circle</span>
@@ -224,41 +224,43 @@ if(!isset($_SESSION['username'])){
                             </thead>
                             <tbody>
                             <?php
-                            // Dividir el contenido del archivo de valores en un array de líneas
-                            $valores = explode(PHP_EOL, $valor_temperatura);
-                            // Dividir el contenido del archivo de hora en un array de líneas
-                            $horas = explode(PHP_EOL, $hora_temperatura);
-                            // Dividir el contenido del archivo de fecha en un array de líneas
-                            $fechas = explode(PHP_EOL, $data_temperatura);
-                            // Dividir el contenido del archivo de fecha en un array de líneas
-                            $alerta = explode(PHP_EOL, $valor_Alerta1);
-                            // Dividir el contenido del archivo de fecha en un array de líneas
-                            $viento = explode(PHP_EOL, $viento_Alerta);
+// Dividir el contenido del archivo de valores en un array de líneas
+$valores = explode(PHP_EOL, $valor_temperatura);
+// Dividir el contenido del archivo de hora en un array de líneas
+$horas = explode(PHP_EOL, $hora_temperatura);
+// Dividir el contenido del archivo de fecha en un array de líneas
+$fechas = explode(PHP_EOL, $data_temperatura);
+// Dividir el contenido del archivo de alerta en un array de líneas
+$alerta = explode(PHP_EOL, $valor_Alerta1);
+// Dividir el contenido del archivo de viento en un array de líneas
+$viento = explode(PHP_EOL, $viento_Alerta);
 
-                            // Contador para el id del checkbox
-                            $checkbox_id = 1;
-                            // Iterar sobre cada valor de temperatura y mostrarlo en una fila de la tabla
-                            foreach ($valores as $key => $valor) {
-                                // Verificar si el valor de temperatura es válido
-                                if (!empty($valor)) {
-                                    echo "<tr>";
-                                    echo "<td>";
-                                    echo "<input class='form-check-input me-1' type='checkbox' value='' id='checkbox$checkbox_id'>";
-                                    echo "</td>";
-                                    // Verificar si el índice actual existe en el array de horas antes de mostrarlo
-                                    $hora = isset($horas[$key]) ? $horas[$key] : '';
-                                    $fecha = isset($fechas[$key]) ? $fechas[$key] : '';
-                                    echo "<td>$valor °C</td>";
-                                    echo "<td>$fecha</td>";
-                                    echo "<td>$hora</td>";
-                                    // Añadir la bolita de color que cambia según el valor de alerta
-                                    echo "<td><div class='alert-circle' style='background-color: " . getAlertColor($alerta[$key]) . ";'></div></td>";
-                                    echo "<td>$viento[$key] km</td>"; // Cambiado de $viento a $viento[$key]
-                                    echo "</tr>";
-                                    $checkbox_id++;
-                                }
-                            }
-                            ?>
+// Contador para el id del checkbox
+$checkbox_id = 1;
+
+// Iterar sobre cada valor de temperatura y mostrarlo en una fila de la tabla
+foreach ($valores as $key => $valor) {
+    // Verificar si el valor de temperatura es válido
+    if (!empty($valor)) {
+        echo "<tr>";
+        echo "<td>";
+        echo "<input class='form-check-input me-1' type='checkbox' value='' id='checkbox$checkbox_id'>";
+        echo "</td>";
+        // Verificar si el índice actual existe en el array de horas antes de mostrarlo
+        $hora = isset($horas[$key]) ? $horas[$key] : '';
+        $fecha = isset($fechas[$key]) ? $fechas[$key] : '';
+        echo "<td>$valor °C</td>";
+        echo "<td>$fecha</td>";
+        echo "<td>$hora</td>";
+        // Añadir la bolita de color que cambia según el valor de alerta
+        echo "<td><div class='alert-circle' style='background-color: " . getAlertColor($alerta[$key]) . ";'></div></td>";
+        echo "<td>" . $viento[$key] . " km</td>"; // Cambiado de $viento a $viento[$key]
+        echo "</tr>";
+        $checkbox_id++;
+    }
+}
+?>
+
                             </tbody>
                         </table>
                     </div>
