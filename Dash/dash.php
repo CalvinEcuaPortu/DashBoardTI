@@ -1,33 +1,40 @@
 <?php
 
-$valor_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt");
-$valor_Humeda = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt");
-$valor_electricida = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt");
-$valor_Aparcamento = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Aparcamento\\valor.txt");
-$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
-$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
-$valor_visitas = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Visitas\\visitas.txt");
+$valor_temperatura = file_get_contents("../Api/files/Temperatura/valor.txt");
+$valor_Humeda = file_get_contents("../Api/files/Humedad/valor.txt");
+$valor_electricida = file_get_contents("../Api/files/Electricida/valor.txt");
+$valor_Aparcamento = file_get_contents("../Api/files/Aparcamento/valor.txt");
+$hora_temperatura = file_get_contents("../Api/files/Temperatura/Hora.txt");
+$data_temperatura = file_get_contents("../Api/files/Temperatura/data.txt");
+$valor_visitas = file_get_contents("../Api/files/Visitas/valor.txt");
 
 
-$valor_alumbrado = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Alumbrado\\valor.txt");
-$valor_warning = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Warning\\valor.txt");
+$valor_alumbrado = file_get_contents("../Api/files/Alumbrado/valor.txt");
+$valor_warning = file_get_contents("../Api/files/Warning/valor.txt");
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Temperatura/valor.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_valor_temperatura = end($lines);
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Humedad\\valor.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Humedad/valor.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_valor_Humeda = end($lines);
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Electricida/valor.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_valor_electricida = end($lines);
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Aparcamento\\valor.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Alumbrado/valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_Alumbrado = end($lines);
+
+
+$lines = file("../Api/files/Warning/valor.txt", FILE_IGNORE_NEW_LINES);
+$ultimo_valor_Warning = end($lines);
+
+$lines = file("../Api/files/Aparcamento/valor.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_valor_Aparcamento = end($lines);
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Temperatura/Hora.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_hora_temperatura = end($lines);
 
-$lines = file("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt", FILE_IGNORE_NEW_LINES);
+$lines = file("../Api/files/Temperatura/data.txt", FILE_IGNORE_NEW_LINES);
 $ultimo_data_temperatura = end($lines);
 
 session_start();
@@ -60,14 +67,10 @@ if(!isset($_SESSION['username'])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="estilo/estilosD.css">
      <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
+
     
   </head>
-  <body style="background: #F0F3F6 ;">
-
-
-
-
-
+  <body style="background: #2E4053 ;">
 
 <div class="container-fluid">
    <br>
@@ -77,10 +80,6 @@ if(!isset($_SESSION['username'])){
         <img src="../imagenes/logo.png" style="width:40px; ">
         <a class="navbar-brand"><b>OceanView</b></a>
       </div>
-     
-       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-       </form>
       <span class="material-symbols-outlined">account_circle</span>
      </div>
    </nav>
@@ -99,6 +98,13 @@ if(!isset($_SESSION['username'])){
                         <div class="menu-item" href="../Dash/dash.php">
                             <span class="material-symbols-outlined" style="padding: 5px;">widgets</span>
                             <p class="card-text">Dashboard</p>
+                        </div>
+                    </a>
+
+                    <a class="boton" href="../historico/historico.php">
+                        <div class="menu-item">
+                            <span class="material-symbols-outlined" style="padding: 5px;">timeline</span>
+                            <p class="card-text">Historico</p>
                         </div>
                     </a>
 
@@ -136,6 +142,7 @@ if(!isset($_SESSION['username'])){
                             <p class="card-text">Aparcamento</p>
                         </div>
                     </a>
+
                   </div>
                     <br>
 
@@ -153,9 +160,9 @@ if(!isset($_SESSION['username'])){
            <div class="main--content">
              <div class="header--wrapper">
                 <div class="header--title">
-                      <p class="card-title" style="font-size:24px; margin-bottom:-16px;">Welcome <?php echo $_SESSION['username'];?></p><br>
+                      <p class="card-title" style="font-size:24px; margin-bottom:-16px; color:#D0D3D4 ">Welcome <?php echo $_SESSION['username'];?></p><br>
                    <div class="menu-item" >
-                      <h2 style="display: inline-block; padding-right: 680px;" >DashBoard</h2>
+                      <h2 style="display: inline-block; padding-right: 672px; color: #FDFEFE ;" >DashBoard</h2>
                       <div class="col-sm-5">
                          <div class="card text-center" style="border-radius: 24px; display: inline-block; margin-left: 20px;">   
                             <div class="card-body" >
@@ -200,8 +207,6 @@ if(!isset($_SESSION['username'])){
                     </div>
                   </div>
 
-
-
                    <div class="col-sm-4">
                <div class="card text-center" style="border-radius: 24px;">
                             
@@ -244,7 +249,7 @@ if(!isset($_SESSION['username'])){
             <div class="row">
                 <div class="col-sm-12">
                     <h5 class="card-title" style="text-align: left;">Warnings</h5>
-                    <h5 class="card-title" style="text-align: left; font-size: 40px;"><?php echo $valor_warning;?></h5>
+                    <h5 class="card-title" style="text-align: left; font-size: 40px;"><?php echo $ultimo_valor_Warning;?></h5>
                     <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
             </div>
@@ -271,7 +276,7 @@ if(!isset($_SESSION['username'])){
             <div class="row">
                 <div class="col-sm-6">
                     <h5 class="card-title" style="text-align: left;">Ilumbrado</h5>
-                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $valor_alumbrado;?></h5>
+                    <h5 class="card-title "style=" text-align: left;  font-size: 40px;"><?php echo $ultimo_valor_Alumbrado;?></h5>
                     </div>
                     <p class="card-text " style="text-align: left;">Ultima actualizacao: <?php echo $ultimo_data_temperatura . " " . $ultimo_hora_temperatura;?></p>
                 </div>
@@ -354,9 +359,6 @@ if(!isset($_SESSION['username'])){
         </div>
     </div>
 </div>
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

@@ -1,8 +1,8 @@
 <?php
 
-$valor_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\valor.txt");
-$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
-$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
+$valor_temperatura = file_get_contents("../Api/files/Temperatura/valor.txt");
+$hora_temperatura = file_get_contents("../Api/files/Temperatura/Hora.txt");
+$data_temperatura = file_get_contents("../Api/files/Temperatura/data.txt");
 
 
 session_start();
@@ -36,7 +36,7 @@ if(!isset($_SESSION['username'])){
     <link rel="stylesheet" type="text/css" href="estiloTemp.css">
      <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
   </head>
-  <body style="background: #F0F3F6 ;">
+  <body style="background: #2E4053 ;">
 
 
 
@@ -51,9 +51,6 @@ if(!isset($_SESSION['username'])){
         <img src="../imagenes/logo.png" style="width:40px; ">
         <a class="navbar-brand"><b>OceanView</b></a>
       </div>
-       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-       </form>
       <span class="material-symbols-outlined">account_circle</span>
      </div>
    </nav>
@@ -72,6 +69,13 @@ if(!isset($_SESSION['username'])){
                         <div class="menu-item">
                             <span class="material-symbols-outlined" style="padding: 5px;">widgets</span>
                             <p class="card-text">Dashboard</p>
+                        </div>
+                    </a>
+
+                     <a class="boton" href="../historico/historico.php">
+                        <div class="menu-item">
+                            <span class="material-symbols-outlined" style="padding: 5px;">timeline</span>
+                            <p class="card-text">Historico</p>
                         </div>
                     </a>
 
@@ -127,7 +131,7 @@ if(!isset($_SESSION['username'])){
              <div class="header--wrapper">
                 <div class="header--title">
                    <div class="menu-item" >
-                      <h2 style="display: inline-block; padding-right: 672px;" >Temperatura</h2>
+                      <h2 style="display: inline-block; padding-right: 648px; color: #FDFEFE ;" >Temperatura</h2>
                       <div class="col-sm">
                          <div class="card text-center" style="border-radius: 24px; display: inline-block; margin-left: 20px;">   
                             <div class="card-body" >

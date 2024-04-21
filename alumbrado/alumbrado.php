@@ -1,8 +1,9 @@
 <?php
 
-$valor_electricida = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Electricida\\valor.txt");
-$hora_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\Hora.txt");
-$data_temperatura = file_get_contents("C:\\UniServerZ\\www\\proyectoDef\\Api\\files\\Temperatura\\data.txt");
+// Leer los datos de electricidad de los archivos
+$valor_electricida = file_get_contents("../Api/files/Electricida/valor.txt");
+$hora_electricida = file_get_contents("../Api/files/Electricida/Hora.txt");
+$data_electricida = file_get_contents("../Api/files/Electricida/data.txt");
 
 
 session_start();
@@ -37,7 +38,7 @@ if(!isset($_SESSION['username'])){
      <link rel="icon" sizes="64x64" href="../imagenes/logo.ico" type="image/x-icon">
     
   </head>
-  <body style="background: #F0F3F6 ;">
+  <body style="background: #2E4053 ;">
 
 
 
@@ -52,9 +53,6 @@ if(!isset($_SESSION['username'])){
         <img src="../imagenes/logo.png" style="width:40px; ">
         <a class="navbar-brand"><b>OceanView</b></a>
       </div>
-       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-       </form>
       <span class="material-symbols-outlined">account_circle</span>
      </div>
    </nav>
@@ -73,6 +71,13 @@ if(!isset($_SESSION['username'])){
                         <div class="menu-item">
                             <span class="material-symbols-outlined" style="padding: 5px;">widgets</span>
                             <p class="card-text">Dashboard</p>
+                        </div>
+                    </a>
+
+                     <a class="boton" href="../historico/historico.php">
+                        <div class="menu-item">
+                            <span class="material-symbols-outlined" style="padding: 5px;">timeline</span>
+                            <p class="card-text">Historico</p>
                         </div>
                     </a>
 
@@ -127,7 +132,7 @@ if(!isset($_SESSION['username'])){
              <div class="header--wrapper">
                 <div class="header--title">
                    <div class="menu-item" >
-                      <h2 style="display: inline-block; padding-right: 672px;" >Alumbrado Publico</h2>
+                      <h2 style="display: inline-block; padding-right: 672px; color: #FDFEFE ;" >Alumbrado Publico</h2>
                       <div class="col-sm">
                          <div class="card text-center" style="border-radius: 24px; display: inline-block; margin-left: 20px;">   
                             <div class="card-body" >
@@ -203,6 +208,7 @@ if(!isset($_SESSION['username'])){
                             <th scope="col">Valor</th>
                             <th scope="col">Data de actualizacao</th>
                             <th scope="col">Hora de actualizacao</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -210,9 +216,9 @@ if(!isset($_SESSION['username'])){
                         // Dividir el contenido del archivo de valores en un array de líneas
                         $valores = explode(PHP_EOL, $valor_electricida);
                         // Dividir el contenido del archivo de hora en un array de líneas
-                        $horas = explode(PHP_EOL, $hora_temperatura);
+                        $horas = explode(PHP_EOL, $hora_electricida);
                         // Dividir el contenido del archivo de fecha en un array de líneas
-                        $fechas = explode(PHP_EOL, $data_temperatura);
+                        $fechas = explode(PHP_EOL, $data_electricida);
                         // Contador para el id del checkbox
                         $checkbox_id = 1;
                         // Iterar sobre cada valor de temperatura y mostrarlo en una fila de la tabla
