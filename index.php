@@ -23,8 +23,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 }
 ?>
 
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,18 +32,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="estilo/style.css">
     <link rel="icon" sizes="64x64" href="imagenes/logo.ico" type="image/x-icon">
-
-
   </head>
   <body style="background-image:url('imagenes/fondo.jpg') ;background-repeat: no-repeat;background-size: cover;">
-
    <div class="container">
      <div class="row justify-content-center">
-     <form class="TIform" method="POST" style="background-color: #FFFFFF ; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);"> <!-- Corrección en el método de envío del formulario -->
+     <form class="TIform" method="POST" style="background-color: #FFFFFF ; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
       <label style="text-align: center;">------------------ OceanView -----------------</label>
-      <img class="img-fluid" src="imagenes/logo.png" height="20px">
+      <img class="img-fluid" src="imagenes/logo.png" height="20" alt="logo">
   <p>
-    <label class="row justify-content-center" for="signup">Login</label>
+    <label class="row justify-content-center" for="username">Login</label>
     <label for="username">Username</label><br>
     <input type="text" id="username" name="username" placeholder="Insira o seu Username"><br>
     <label for="password">Password</label><br>
@@ -59,3 +54,4 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+
